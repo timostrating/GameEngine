@@ -5,6 +5,7 @@ import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.RawModal;
 import renderEngine.Renderer;
+import shaders.StaticShader;
 
 /**
  * Created by Sneeuwpopsneeuw on 28-Sep-17.
@@ -16,6 +17,7 @@ public class MainGameLoop {
 
         Loader loader = new Loader();
         Renderer renderer = new Renderer();
+        StaticShader shader = new StaticShader();
 
         float[] vertices = {
                 -0.5f, 0.5f, 0,     // VO
@@ -33,15 +35,16 @@ public class MainGameLoop {
 
 
         while (!Display.isCloseRequested()) {  // main Game loop
-            //prepare
             renderer.prepare();
 
-            // render
-            renderer.render(modal);
+            shader.start();
+                renderer.render(modal);
+            shader.stop();
 
             DisplayManager.updateDisplay();
         }
 
+        shader.cleanUp();
         loader.cleanUp();
         DisplayManager.closeDisplay();
     }
