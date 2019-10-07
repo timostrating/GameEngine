@@ -1,6 +1,6 @@
 # GameEngine
 
-This is my first Game Engine is ever build. LWJGL does most of the openGL magic for me.
+This is some old code from a youtube tutorial I followed: https://www.youtube.com/user/ThinMatrix/
 
 ### TODO
 - [X] Storing data
